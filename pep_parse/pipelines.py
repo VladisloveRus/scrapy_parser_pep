@@ -22,8 +22,9 @@ class PepParsePipeline:
     def close_spider(self, spider):
         RESULTS_DIR = BASE_DIR / 'results'
         with open(
-            RESULTS_DIR
-            / FILE_NAME.format(dt.now().strftime(TIME_FORMAT)),
+            RESULTS_DIR / FILE_NAME.format(
+                dt.now().strftime(TIME_FORMAT)
+            ),
             mode='w',
             encoding='utf-8',
         ) as self.f:
