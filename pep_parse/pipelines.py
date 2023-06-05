@@ -8,7 +8,6 @@ TIME_FORMAT = r'%Y-%m-%d_%H-%M-%S'
 
 class PepParsePipeline:
     def open_spider(self, spider):
-        self.RESULTS_DIR = BASE_DIR / 'results'
         self.statuses = dict()
         self.total = 0
 
@@ -21,10 +20,10 @@ class PepParsePipeline:
         return item
 
     def close_spider(self, spider):
+        RESULTS_DIR = BASE_DIR / 'results'
         with open(
-            self.RESULTS_DIR / FILE_NAME.format(
-                dt.now().strftime(TIME_FORMAT)
-            ),
+            RESULTS_DIR
+            / FILE_NAME.format(dt.now().strftime(TIME_FORMAT)),
             mode='w',
             encoding='utf-8',
         ) as self.f:
